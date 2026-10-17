@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Results | TweetSense AI{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <span class="tag">PREDICTION HISTORY</span>
+    <h1>Analysis <span class="accent">Dashboard</span></h1>
+    <p>Review sentiment predictions made during this application session.</p>
+</section>
+
+<div class="cards">
+    <div class="card">
+        <h3>Total Predictions</h3>
+        <h1>{{ total }}</h1>
+    </div>
+    <div class="card">
+        <h3>Positive</h3>
+        <h1 class="positive">{{ positive }}</h1>
+    </div>
+    <div class="card">
+        <h3>Negative</h3>
+        <h1 class="negative">{{ negative }}</h1>
+    </div>
+</div>
+
+<div class="panel">
+    <h2 style="margin-bottom:18px;">Recent Predictions</h2>
+
+    {% if history %}
+        {% for item in history|reverse %}
+        <div class="result">
+            <p><strong>Tweet:</strong> {{ item.tweet }}</p>
+            <p><strong>Sentiment:</strong>
+                <span class="{{ 'positive' if item.sentiment == 'Positive' else 'negative' }}">
+                    {{ item.sentiment }}
+                </span>
+            </p>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No predictions yet. Go to Home and analyze your first tweet!</p>
+        <p style="margin-top:18px;"><a class="btn" href="/">Analyze a Tweet</a></p>
+    {% endif %}
+</div>
+
+<p style="text-align:center;margin-top:20px;font-size:13px;">
+    Note: History is stored temporarily and resets when the server restarts.
+</p>
+{% endblock %}

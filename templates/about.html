@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}About | TweetSense AI{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <span class="tag">ABOUT THE PROJECT</span>
+    <h1>Turning tweets into <span class="accent">insights.</span></h1>
+    <p>A machine learning project that identifies sentiment in text.</p>
+</section>
+
+<div class="cards">
+    <div class="card">
+        <h3>Project Overview</h3>
+        <p>TweetSense AI analyzes tweet text and predicts whether the sentiment is positive or negative.</p>
+    </div>
+    <div class="card">
+        <h3>Machine Learning</h3>
+        <p>The project uses a trained classification model with TF-IDF text features.</p>
+    </div>
+    <div class="card">
+        <h3>Technology Stack</h3>
+        <p>Python, Flask, Pandas, Scikit-learn, TF-IDF and HTML/CSS.</p>
+    </div>
+</div>
+
+<div class="panel">
+    <h2 style="margin-bottom:14px;">How it works</h2>
+    <p>01. Enter a tweet into the input box.</p>
+    <p>02. The text is cleaned and converted into TF-IDF features.</p>
+    <p>03. The trained model predicts the sentiment.</p>
+    <p>04. The website displays the prediction.</p>
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Home | TweetSense AI{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <span class="tag">✦ AI-Powered Sentiment Analysis</span>
+    <h1>Understand the <span class="accent">feeling</span><br>behind every tweet.</h1>
+    <p>Analyze tweet text with machine learning and discover<br>
+    whether the sentiment is Positive or Negative.</p>
+</section>
+
+<section class="panel">
+    <h2 style="margin-bottom:10px;">Analyze a Tweet</h2>
+    <p style="margin-bottom:24px;">Enter your tweet below to predict its sentiment.</p>
+
+    <form method="POST" action="/">
+        <label for="tweet">Your tweet</label>
+        <textarea id="tweet" name="tweet"
+          placeholder="What are people saying today?"
+          required>{{ tweet or '' }}</textarea>
+        <button type="submit">✦ Analyze Sentiment</button>
+    </form>
+
+    {% if sentiment %}
+    <div class="result">
+        <h3 class="{{ 'positive' if sentiment == 'Positive' else 'negative' }}">
+            Prediction: {{ sentiment }}
+        </h3>
+        <p style="margin-top:8px;">
+            {% if sentiment == 'Positive' %}
+                The model classified this tweet as positive.
+            {% else %}
+                The model classified this tweet as negative.
+            {% endif %}
+        </p>
+    </div>
+    {% endif %}
+</section>
+
+<div class="cards">
+    <div class="card">
+        <h3>01 · Text Processing</h3>
+        <p>Cleans tweet text before converting it into numerical features.</p>
+    </div>
+    <div class="card">
+        <h3>02 · TF-IDF</h3>
+        <p>Transforms words into numerical features for the model.</p>
+    </div>
+    <div class="card">
+        <h3>03 · Prediction</h3>
+        <p>Uses a trained machine learning model to classify sentiment.</p>
+    </div>
+</div>
+{% endblock %}
